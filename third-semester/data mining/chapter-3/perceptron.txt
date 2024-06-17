@@ -1,0 +1,104 @@
+### Artificial Neural Network (ANN)
+
+**Definition:**
+An Artificial Neural Network (ANN) is a computational model inspired by the way biological neural networks in the human brain process information. ANNs consist of interconnected layers of nodes (neurons), which work together to solve complex problems like classification, regression, pattern recognition, and more. Each connection has a weight, and each neuron applies an activation function to its input to produce an output.
+
+### Perceptron
+
+The perceptron is the simplest type of artificial neural network and serves as the building block for more complex neural networks. It is used for binary classification tasks.
+
+#### Working of Perceptron for Classification
+
+1. **Initialization**
+2. **Training**
+3. **Prediction**
+
+#### 1. Initialization
+
+**Purpose:**
+- To set up the initial state of the perceptron, including initializing weights and biases.
+
+**Steps:**
+1. **Weights Initialization:** Initialize the weights (\(w\)) randomly or to zero. Each feature in the input vector \(X\) has a corresponding weight.
+2. **Bias Initialization:** Initialize the bias (\(b\)), typically to zero or a small random value.
+
+**Example:**
+- For a perceptron with two input features, initialize weights \(w_1\) and \(w_2\), and bias \(b\).
+
+  \[
+  w = [w_1, w_2] \quad \text{and} \quad b = 0
+  \]
+
+#### 2. Training
+
+**Purpose:**
+- To adjust the weights and bias to minimize classification errors on the training data.
+
+**Steps:**
+1. **Input Data:** Feed the training data into the perceptron. Each instance \(X = [x_1, x_2, ..., x_n]\) is associated with a label \(y\) (either 0 or 1 for binary classification).
+2. **Weighted Sum:** Calculate the weighted sum of inputs plus the bias.
+
+  \[
+  z = w_1x_1 + w_2x_2 + ... + w_nx_n + b
+  \]
+
+3. **Activation Function:** Apply the activation function, typically a step function for a basic perceptron. If \(z \geq 0\), the output is 1; otherwise, it is 0.
+
+  \[
+  \hat{y} = \begin{cases} 
+  1 & \text{if } z \geq 0 \\
+  0 & \text{if } z < 0 
+  \end{cases}
+  \]
+
+4. **Update Rule:** Adjust the weights and bias based on the prediction error \( (y - \hat{y}) \).
+
+  \[
+  w_j = w_j + \Delta w_j \quad \text{where} \quad \Delta w_j = \eta \cdot (y - \hat{y}) \cdot x_j
+  \]
+  \[
+  b = b + \Delta b \quad \text{where} \quad \Delta b = \eta \cdot (y - \hat{y})
+  \]
+
+  Here, \(\eta\) is the learning rate.
+
+5. **Iteration:** Repeat the above steps for each training example and for multiple epochs until the weights converge or the error is minimized.
+
+**Example:**
+- Assume we have a single training instance \( X = [2, 3] \) with label \( y = 1 \).
+- Initial weights: \( w = [0.5, -0.5] \), \( b = 0.1 \).
+- Compute \( z = (0.5 \times 2) + (-0.5 \times 3) + 0.1 = -0.4 \).
+- Apply activation function: \( \hat{y} = 0 \) (since \( z < 0 \)).
+- Update weights: \( \Delta w_1 = 0.1 \times (1 - 0) \times 2 = 0.2 \), \( \Delta w_2 = 0.1 \times (1 - 0) \times 3 = 0.3 \).
+- New weights: \( w = [0.7, -0.2] \), \( b = 0.1 + 0.1 = 0.2 \).
+
+#### 3. Prediction
+
+**Purpose:**
+- To use the trained perceptron to classify new, unseen data points.
+
+**Steps:**
+1. **Input Data:** Feed the input feature vector \( X \) into the perceptron.
+2. **Weighted Sum:** Compute the weighted sum of the inputs and bias.
+
+  \[
+  z = w_1x_1 + w_2x_2 + ... + w_nx_n + b
+  \]
+
+3. **Activation Function:** Apply the activation function to get the output.
+
+  \[
+  \hat{y} = \begin{cases} 
+  1 & \text{if } z \geq 0 \\
+  0 & \text{if } z < 0 
+  \end{cases}
+  \]
+
+**Example:**
+- Given a new input \( X = [1, 4] \) and the final trained weights \( w = [0.7, -0.2] \) and bias \( b = 0.2 \):
+  - Compute \( z = (0.7 \times 1) + (-0.2 \times 4) + 0.2 = 0.7 - 0.8 + 0.2 = 0.1 \).
+  - Apply activation function: \( \hat{y} = 1 \) (since \( z \geq 0 \)).
+
+### Conclusion
+
+The perceptron model is a fundamental building block in neural networks used for binary classification tasks. It consists of three main phases: initialization, training, and prediction. During initialization, weights and biases are set. In the training phase, weights are adjusted iteratively to minimize classification errors. Finally, in the prediction phase, the trained perceptron is used to classify new data points based on the learned weights and biases. This simple yet powerful model forms the foundation for more complex neural networks used in various machine learning applications.
